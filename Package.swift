@@ -3,15 +3,12 @@ import PackageDescription
 
 let package = Package(
     name: "ColorCode",
-    platforms: [
-        .macOS(.v14),
-    ],
+    platforms: [.macOS(.v15)],
     products: [
         .library(name: "ColorCode", targets: ["ColorCode"]),
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-numerics", from: Version(1, 0, 2)),
-        .package(url: "https://github.com/SimplyDanny/SwiftLintPlugins", from: Version(0, 57, 0)),
     ],
     targets: [
         .target(name: "ColorCode"),
@@ -21,13 +18,3 @@ let package = Package(
         ])
     ]
 )
-
-
-for target in package.targets {
-    target.plugins = [
-        .plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLintPlugins"),
-    ]
-    target.swiftSettings = [
-        .enableUpcomingFeature("ExistentialAny"),
-    ]
-}
